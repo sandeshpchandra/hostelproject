@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 
 from AdminApp.models import Departmentdb,Roomdb,Studentdb
+from UserApp.models import Complaintdb
 
 
 # Create your views here.
@@ -141,5 +142,11 @@ def deletestudent(request, dataid):
     data.delete()
     return redirect(displaystudent)
 
+def complaints(request):
+    data=Complaintdb.objects.all()
+    return render(request,"complaints.html",{'data':data})
 
-
+def deletecom(request, dataid):
+    data = Complaintdb.objects.filter(id=dataid)
+    data.delete()
+    return redirect(complaints)

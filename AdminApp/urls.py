@@ -26,4 +26,8 @@ urlpatterns=[
     path('editstudent/<int:dataid>', views.editstudent, name="editstudent"),
     path('updatestudent/<int:dataid>', views.updatestudent, name="updatestudent"),
     path('deletestudent/<int:dataid>', views.deletestudent, name="deletestudent"),
+
+    path('complaints/', views.complaints, name="complaints"),
+    path('deletecom/<int:dataid>', views.deletecom, name="deletecom"),
+
 ]
