@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 
 from AdminApp.models import Departmentdb,Roomdb,Studentdb
@@ -150,3 +152,30 @@ def deletecom(request, dataid):
     data = Complaintdb.objects.filter(id=dataid)
     data.delete()
     return redirect(complaints)
+
+
+def adminlogin(request):
+    return render(request,"adminlogin.html")
+
+def loginpage(request):
+    if request.method=='POST':
+        un=request.POST.get('user_name')
+        pwd=request.POST.get('pass_word')
+        if User.objects.filter(username__contains=un).exists():
+            x=authenticate(username=un,password=pwd)
+            if x is not None:
+                login(request,x)
+                request.session['username']=un
+                request.session['password']=pwd
+                return redirect(index)
+            else:
+                return redirect(adminlogin)
+
+        else:
+            return redirect(adminlogin)
+
+
+def adminlogout(request):
+    del request.session['username']
+    del request.session['password']
+    return redirect(adminlogin)

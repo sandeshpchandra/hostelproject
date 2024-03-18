@@ -1,6 +1,10 @@
+from django.contrib import messages
+
 from django.shortcuts import render,redirect
 from UserApp.models import Complaintdb,Signupdb
 from AdminApp.models import Departmentdb,Roomdb,Studentdb
+import logging
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -32,7 +36,7 @@ def signinup(request):
     return render(request,"signinup.html",{'data':data})
 
 
-
+logger = logging.getLogger(__name__)
 def savesignup(request):
     if request.method=="POST":
         na=request.POST.get('username')
@@ -41,9 +45,14 @@ def savesignup(request):
         ur=request.POST.get('semail')
         su=request.POST.get('pass1')
         ms=request.POST.get('pass2')
-        obj=Signupdb(username=na,sdep=em,sroom=ud,semail=ur,pass1=su,pass2=ms)
-        obj.save()
-        return redirect(signinup)
+        if Studentdb.objects.filter(email=ur,sdepartment=em,sroom=ud).exists():
+             obj=Signupdb(username=na,sdep=em,sroom=ud,semail=ur,pass1=su,pass2=ms)
+             obj.save()
+             messages.success(request,"Registered Successfully")
+             return redirect(signinup)
+        else:
+            messages.error(request, "Enter department,room and email correctly")
+            return redirect(signinup)
 
 def userlogin(request):
     if request.method=='POST':
@@ -60,6 +69,6 @@ def userlogin(request):
 
 
 def userlogout(request):
-    del request.session['uemail']
-    del request.session['upass']
+    del request.session['semail']
+    del request.session['pass1']
     return redirect(signinup)

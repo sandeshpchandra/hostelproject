@@ -30,4 +30,8 @@ urlpatterns=[
     path('complaints/', views.complaints, name="complaints"),
     path('deletecom/<int:dataid>', views.deletecom, name="deletecom"),
 
+    path('adminlogin/', views.adminlogin, name="adminlogin"),
+    path('loginpage/', views.loginpage, name="loginpage"),
+    path('adminlogout/', views.adminlogout, name="adminlogout"),
+
 ]
