@@ -23,6 +23,6 @@ import UserApp.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('AdminApp/',include(AdminApp.urls)),
-    # path('UserApp/', include(UserApp.urls))
+    path('UserApp/', include(UserApp.urls))
 
 ]
