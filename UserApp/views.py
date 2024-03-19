@@ -27,6 +27,7 @@ def savecomplaint(request):
         ms=request.POST.get('message')
         obj=Complaintdb(name=na,email=em,udep=ud,uroom=ur,subject=su,message=ms)
         obj.save()
+        messages.success(request, "Complaint Registered Successfully"),
         return redirect(home_page_user)
 
 

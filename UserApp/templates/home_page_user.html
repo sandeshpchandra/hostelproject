@@ -55,8 +55,9 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
+                                            <li><a href="#">Welcome Mr {{pro.username}}</a></li>
                                             <li><a class="active" href="{% url 'userlogout' %}">Logout</a></li>
-<!--                                            <li><a href="about.html">About</a></li>-->
+
 <!--                                            <li><a class="" href="travel_destination.html">Destination</a></li>-->
 <!--                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>-->
 <!--                                                <ul class="submenu">-->
@@ -78,12 +79,12 @@
                             <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
                                     <div class="number">
-                                        <p> <i class="fa fa-phone"></i> +91 7356718496</p>
+                                        <p> <i class="fa fa-phone"></i> +91 85963551100</p>
                                     </div>
                                     <div class="social_links d-none d-xl-block">
                                         <ul>
-                                            <li><a href="https://anugrah.pythonanywhere.com/"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="https://www.linkedin.com/in/anugrah-m-v-187203271/"> <i class="fa fa-linkedin"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
                                             <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
                                             <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
                                         </ul>
@@ -115,8 +116,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>Hostal Name</h3>
-                                <p>Come and join our family</p>
+                                <h3>Poly-Womens</h3>
+                                <p>Hostal | Payyannur</p>
 <!--                                <a href="#" class="boxed-btn3">Explore Now</a>-->
                             </div>
                         </div>
@@ -128,8 +129,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>Hostal </h3>
-                                <p>Our hostl is worlds best</p>
+                                <h3>Poly-Womens  </h3>
+                                <p>Hostal | Payyannur</p>
 <!--                                <a href="#" class="boxed-btn3">Explore Now</a>-->
                             </div>
                         </div>
@@ -184,7 +185,7 @@
                             <img src="{% static 'asts/img/destination/3.jpg' %}" alt="">
                         </div>
                         <div class="content">
-                            <p class="d-flex align-items-center">America <a href="travel_destination.html">  10 Places</a> </p>
+                            <p class="d-flex align-items-center">Play Area <a href="travel_destination.html">  10 Places</a> </p>
 
                         </div>
                     </div>
@@ -253,20 +254,20 @@
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
                                 <h3>Kerala Kannur</h3>
-                                <p>Mayyil , Near Satcos 670602</p>
+                                <p>Payyanur , Near Poly Payyanur 670307</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+91 7356718496</h3>
+                                <h3>+91 81110001100</h3>
                                 <p>Mon to Fri 9am to 6pm</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-email"></i></span>
                             <div class="media-body">
-                                <h3>amvanugrah@gmail.com</h3>
+                                <h3>polypayyannurhostal@gmail.com</h3>
                                 <p>Send us your query anytime!</p>
                             </div>
                         </div>
@@ -315,9 +316,9 @@
                                     <img src="img/footer_logo.png" alt="">
                                 </a>
                             </div>
-                            <p>Kerala Kannur <br> India , Kerala , Kannur <br>
-                                <a href="#">+91 7356718496</a> <br>
-                                <a href="#">amvanugrah@gmail.com</a>
+                            <p>India Kerala Kannur <br> Payyannur , Near Poly Payyanur <br>
+                                <a href="#">+91 8111011001</a> <br>
+                                <a href="#">polypayyannurhostal@gmail.com</a>
                             </p>
                             <div class="socail_links">
                                 <ul>
@@ -430,7 +431,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made by Sandesh And Anugrah</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made by Arathy , Gopika & Malathi </a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -497,6 +498,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
          }
         });
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+  swal('{{i}}','','warning')
+</script>
+{% elif i.tags == 'error' %}
+<script>
+  swal('{{i}}','','error')
+</script>
+{% elif i.tags == 'success' %}
+<script>
+  swal('{{i}}','','success')
+</script>
+{% else %}
+<script>
+    swal('{{i}}','','info')
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
 </body>
 
 </html>
